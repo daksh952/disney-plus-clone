@@ -7,7 +7,7 @@ function Login() {
         <Container>
             <CTA>
                 <CTALogoOne src="/images/cta-logo-one.svg" />
-                <SignUp>GET ALL THERE</SignUp>
+                <a href="/home"><SignIn>Login</SignIn></a>
                 <Description>
                 Get Premier Access to Raya and the Last Dragon for an additional fee
             with a Disney+ subscription. As of 15/02/23, the price of Disney+
@@ -59,25 +59,29 @@ const CTA = styled.div`
 const CTALogoOne = styled.img`
 `
 
-const SignUp = styled.a`
-    width: 100%;
+const SignIn = styled.button`
+    width: 200%;
     background-color: #0063e5;
     font-weight: bold;
     padding: 17px 0;
     color: #f9f9f9;
     border-radius: 4px;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     cursor: pointer;
-    transition: all 250ms;
-    letter-spacing: 1.5px;
+    border-radius:35px;
+    // transition: all 250ms;
+    text-decoration: none;
+    letter-spacing: 2px;
     margin-top: 8px;
     margin-bottom: 12px;
+    margin-left:-50px;
+    margin-right:50px;
+    left: 40%;
     &:hover {
         background: #0483ee;
     }
 `
-
 const Description = styled.p`
     font-size: 11px;
     letter-spacing: 1.5px;

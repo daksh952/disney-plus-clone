@@ -1,63 +1,16 @@
 import React from 'react'
-import {auth, provider} from "../firebase"
 import styled from 'styled-components'
-import { useNavigate } from 'react-router-dom'
-import {
-    selectUserName,
-    setUserLogin,
-    setSignOut
-  } from "../features/user/userSlice";
-  import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from "react"
 
 function Header() {
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const userName = useSelector(selectUserName);
-
-    useEffect(()=> {
-        auth.onAuthStateChanged(async (user)=>{
-        if(user){
-            dispatch(setUserLogin({
-                name: user.displayName,
-                email: user.email,
-            }))
-            navigate("/home")
-        }
-        })
-    },[])
-
-    const signIn = () => {
-        auth.signInWithPopup(provider)
-        .then((result)=>{
-            let user = result.user
-            dispatch(setUserLogin({
-                name: user.displayName,
-                email: user.email
-            }))
-            navigate("/home")
-        })
-    }
-
-    const signOut = () =>{
-        auth.signOut()
-        .then(()=> {
-            dispatch(setSignOut());
-            navigate("/")
-        })
-    }
+    
 
     return (
         <Nav>
-            <Logo src="/images/logo.svg" alt="Disney+" />
-            { !userName ?  (
-                <LoginContainer>
-                  <Login onClick={signIn}>Login</Login>
-                </LoginContainer>
-                ): 
+            <a href="/home"> <Logo src="/images/logo.svg" alt="Disney+" /></a>
+            
             <>
             <NavMenu>
-                <a href="/">
+                <a href="/home">
                     <img src="/images/home-icon.svg" alt="HOME" />
                     <span>HOME</span>
                 </a>
@@ -82,9 +35,9 @@ function Header() {
                     <span>SERIES</span>
                 </a>
             </NavMenu>
-            <UserImg onClick={signOut} src= "/images/userlogo.png" alt="SignOut"/>
+            <a href="/"><UserImg src= "/images/userlogo.png" alt="SignOut"/></a>
+
             </>
-           }
         </Nav>
 
     )

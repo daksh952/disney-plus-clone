@@ -4,22 +4,7 @@ import styled from 'styled-components'
 function Viewers() {
     return (
         <Container>
-            {/* <Wrap>
-                <img src="/images/viewers-disney.png" />
-            </Wrap>
-            <Wrap>
-                <img src="/images/viewers-pixar.png" />
-            </Wrap>
-            <Wrap>
-                <img src="/images/viewers-marvel.png" />
-            </Wrap>
-            <Wrap>
-                <img src="/images/viewers-starwars.png" />
-            </Wrap>
-            <Wrap>
-                <img src="/images/viewers-national.png" />
-            </Wrap> */}
-                  <Wrap>
+        <Wrap>
         <img src="/images/viewers-disney.png" alt="" />
         <video autoPlay={true} loop={true} playsInline={true}>
           <source src="/videos/1564674844-disney.mp4" type="video/mp4" />
