@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
 import {
     selectUserName,
-    selectUserPhoto,
     setUserLogin,
     setSignOut
   } from "../features/user/userSlice";
@@ -15,7 +14,6 @@ function Header() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const userName = useSelector(selectUserName);
-    const userPhoto = useSelector(selectUserPhoto);
 
     useEffect(()=> {
         auth.onAuthStateChanged(async (user)=>{
@@ -23,7 +21,6 @@ function Header() {
             dispatch(setUserLogin({
                 name: user.displayName,
                 email: user.email,
-                photo: user.photoURL
             }))
             navigate("/home")
         }
@@ -36,8 +33,7 @@ function Header() {
             let user = result.user
             dispatch(setUserLogin({
                 name: user.displayName,
-                email: user.email,
-                photo: user.photoURL
+                email: user.email
             }))
             navigate("/home")
         })
@@ -53,7 +49,7 @@ function Header() {
 
     return (
         <Nav>
-            <Logo src="/images/logo.svg" />
+            <Logo src="/images/logo.svg" alt="Disney+" />
             { !userName ?  (
                 <LoginContainer>
                   <Login onClick={signIn}>Login</Login>
@@ -62,31 +58,31 @@ function Header() {
             <>
             <NavMenu>
                 <a href="/">
-                    <img src="/images/home-icon.svg" />
+                    <img src="/images/home-icon.svg" alt="HOME" />
                     <span>HOME</span>
                 </a>
-                <a>
-                    <img src="/images/search-icon.svg" />
+                <a href="/#">
+                    <img src="/images/search-icon.svg" alt="SEARCH"/>
                     <span>SEARCH</span>
                 </a>
-                <a>
-                    <img src="/images/watchlist-icon.svg" />
+                <a href="/#">
+                    <img src="/images/watchlist-icon.svg" alt="WATCHLIST"/>
                     <span>WATCHLIST</span>
                 </a>
-                <a>
-                    <img src="/images/original-icon.svg" />
+                <a href="/#">
+                    <img src="/images/original-icon.svg" alt="ORIGINALS"/>
                     <span>ORIGINALS</span>
                 </a>
-                <a>
-                    <img src="/images/movie-icon.svg" />
+                <a href="/#">
+                    <img src="/images/movie-icon.svg" alt="MOVIES"/>
                     <span>MOVIES</span>
                 </a>
-                <a>
-                    <img src="/images/series-icon.svg" />
+                <a href="/#">
+                    <img src="/images/series-icon.svg" alt="SERIES"/>
                     <span>SERIES</span>
                 </a>
             </NavMenu>
-            <UserImg onClick={signOut} src= "https://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" />
+            <UserImg onClick={signOut} src= "/images/userlogo.png" alt="SignOut"/>
             </>
            }
         </Nav>
